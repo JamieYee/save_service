@@ -18,8 +18,8 @@ MaxThread = 2
 
 [Logger.Hooks.Options]
 Debug = "false"
-DBType = "sqlite3" # sqlite3/mysql/postgres
-DSN = "data/save_service.db"
+DBType = "mysql" # sqlite3/mysql/postgres
+DSN = "root:yi898763@tcp(192.168.31.21:3306)/save?charset=utf8mb4&parseTime=True&loc=Local"
 MaxOpenConns = "16"
 MaxIdleConns = "4"
 MaxLifetime = "86400"

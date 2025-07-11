@@ -10,7 +10,7 @@ MenuFile = "menu_cn.json" # Or use "menu_cn.json"
 DenyOperateMenu = true
 
 [General.HTTP]
-Addr = ":8040"
+Addr = ":8080"
 ShutdownTimeout = 10
 ReadTimeout = 60
 WriteTimeout = 60
@@ -48,7 +48,7 @@ Type = "mysql" # 改成 mysql
 # SQLite3 DSN
 # DSN = "data/save_service.db"
 # MySQL DSN
-DSN = "root:yi898763@tcp(127.0.0.1:3306)/save?charset=utf8mb4&parseTime=True&loc=Local"
+DSN = "root:yi898763@tcp(192.168.31.21:3306)/save?charset=utf8mb4&parseTime=True&loc=Local"
 # PostgreSQL DSN
 # DSN = "host=db user=postgres password=123456 dbname=save_service port=5432 sslmode=disable TimeZone=Asia/Shanghai"
 MaxLifetime = 86400
