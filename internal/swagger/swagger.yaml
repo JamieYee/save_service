@@ -289,24 +289,20 @@ definitions:
     type: object
   schema.UpdateCurrentUser:
     properties:
-      email:
-        description: Email of user
-        maxLength: 128
+      avatar:
+        description: Phone number of user
+        maxLength: 256
         type: string
-      name:
+      nickname:
         description: Name of user
         maxLength: 64
-        type: string
-      phone:
-        description: Phone number of user
-        maxLength: 32
         type: string
       remark:
         description: Remark of user
         maxLength: 1024
         type: string
     required:
-    - name
+    - nickname
     type: object
   schema.UpdateLoginPassword:
     properties:
@@ -322,20 +318,17 @@ definitions:
     type: object
   schema.User:
     properties:
+      avatar:
+        description: Avatar of user
+        type: string
       created_at:
         description: Create time
-        type: string
-      email:
-        description: Email of user
         type: string
       id:
         description: Unique ID
         type: string
-      name:
-        description: Name of user
-        type: string
-      phone:
-        description: Phone number of user
+      nickname:
+        description: NickName of user
         type: string
       remark:
         description: Remark of user
@@ -357,21 +350,16 @@ definitions:
     type: object
   schema.UserForm:
     properties:
-      email:
-        description: Email of user
-        maxLength: 128
+      avatar:
+        description: Avatar of user
         type: string
-      name:
-        description: Name of user
+      nickname:
+        description: NickName of user
         maxLength: 64
         type: string
       password:
         description: Password for login (md5 hash)
         maxLength: 64
-        type: string
-      phone:
-        description: Phone number of user
-        maxLength: 32
         type: string
       remark:
         description: Remark of user
@@ -393,7 +381,7 @@ definitions:
         maxLength: 64
         type: string
     required:
-    - name
+    - nickname
     - roles
     - status
     - username

@@ -30,8 +30,8 @@ func (a *User) Query(ctx context.Context, params schema.UserQueryParam, opts ...
 	if v := params.LikeUsername; len(v) > 0 {
 		db = db.Where("username LIKE ?", "%"+v+"%")
 	}
-	if v := params.LikeName; len(v) > 0 {
-		db = db.Where("name LIKE ?", "%"+v+"%")
+	if v := params.LikeNickname; len(v) > 0 {
+		db = db.Where("nickname LIKE ?", "%"+v+"%")
 	}
 	if v := params.Status; len(v) > 0 {
 		db = db.Where("status = ?", v)

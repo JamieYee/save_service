@@ -35,8 +35,8 @@ func (a *Role) Query(ctx context.Context, params schema.RoleQueryParam) (*schema
 	result, err := a.RoleDAL.Query(ctx, params, schema.RoleQueryOptions{
 		QueryOptions: util.QueryOptions{
 			OrderFields: []util.OrderByParam{
-				{Field: "sequence", Direction: util.DESC},
-				{Field: "created_at", Direction: util.DESC},
+				{Field: "sequence", Direction: util.ASC},
+				//{Field: "created_at", Direction: util.DESC},
 			},
 			SelectFields: selectFields,
 		},

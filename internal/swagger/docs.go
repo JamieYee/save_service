@@ -1801,23 +1801,18 @@ const docTemplate = `{
         "schema.UpdateCurrentUser": {
             "type": "object",
             "required": [
-                "name"
+                "nickname"
             ],
             "properties": {
-                "email": {
-                    "description": "Email of user",
+                "avatar": {
+                    "description": "Phone number of user",
                     "type": "string",
-                    "maxLength": 128
+                    "maxLength": 256
                 },
-                "name": {
+                "nickname": {
                     "description": "Name of user",
                     "type": "string",
                     "maxLength": 64
-                },
-                "phone": {
-                    "description": "Phone number of user",
-                    "type": "string",
-                    "maxLength": 32
                 },
                 "remark": {
                     "description": "Remark of user",
@@ -1846,24 +1841,20 @@ const docTemplate = `{
         "schema.User": {
             "type": "object",
             "properties": {
-                "created_at": {
-                    "description": "Create time",
+                "avatar": {
+                    "description": "Avatar of user",
                     "type": "string"
                 },
-                "email": {
-                    "description": "Email of user",
+                "created_at": {
+                    "description": "Create time",
                     "type": "string"
                 },
                 "id": {
                     "description": "Unique ID",
                     "type": "string"
                 },
-                "name": {
-                    "description": "Name of user",
-                    "type": "string"
-                },
-                "phone": {
-                    "description": "Phone number of user",
+                "nickname": {
+                    "description": "NickName of user",
                     "type": "string"
                 },
                 "remark": {
@@ -1894,19 +1885,18 @@ const docTemplate = `{
         "schema.UserForm": {
             "type": "object",
             "required": [
-                "name",
+                "nickname",
                 "roles",
                 "status",
                 "username"
             ],
             "properties": {
-                "email": {
-                    "description": "Email of user",
-                    "type": "string",
-                    "maxLength": 128
+                "avatar": {
+                    "description": "Avatar of user",
+                    "type": "string"
                 },
-                "name": {
-                    "description": "Name of user",
+                "nickname": {
+                    "description": "NickName of user",
                     "type": "string",
                     "maxLength": 64
                 },
@@ -1914,11 +1904,6 @@ const docTemplate = `{
                     "description": "Password for login (md5 hash)",
                     "type": "string",
                     "maxLength": 64
-                },
-                "phone": {
-                    "description": "Phone number of user",
-                    "type": "string",
-                    "maxLength": 32
                 },
                 "remark": {
                     "description": "Remark of user",

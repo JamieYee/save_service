@@ -18,8 +18,8 @@ func TestGeneratePassword(t *testing.T) {
 }
 
 func TestMD5(t *testing.T) {
-	origin := "abc-123"
-	hashVal := "6351623c8cef86fefabfa7da046fc619"
+	origin := "123123"
+	hashVal := "4297f44b13955235245b2497399d7a93"
 	if v := MD5String(origin); v != hashVal {
 		t.Error("Failed to generate MD5 hash: ", v)
 	}

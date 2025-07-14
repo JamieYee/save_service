@@ -2,6 +2,8 @@ package biz
 
 import (
 	"context"
+	"math/rand"
+	"strconv"
 	"time"
 
 	"github.com/JamieYee/save_service/internal/config"
@@ -86,6 +88,8 @@ func (a *User) Create(ctx context.Context, formItem *schema.UserForm) (*schema.U
 		return nil, err
 	} else if existsUsername {
 		return nil, errors.BadRequest("", "Username already exists")
+	} else if len(formItem.Password) < 6 {
+		return nil, errors.BadRequest("", "Password must be at least 6 characters")
 	}
 
 	user := &schema.User{
@@ -93,8 +97,12 @@ func (a *User) Create(ctx context.Context, formItem *schema.UserForm) (*schema.U
 		CreatedAt: time.Now(),
 	}
 
-	if formItem.Password == "" {
-		formItem.Password = config.C.General.DefaultLoginPwd
+	if formItem.Avatar == "" {
+		formItem.Avatar = "https://avatars.githubusercontent.com/u/15099278?s=48"
+	}
+	if formItem.Nickname == "" {
+		n := rand.Intn(999999)
+		formItem.Nickname = "USER" + strconv.Itoa(n)
 	}
 
 	if err := formItem.FillTo(user); err != nil {

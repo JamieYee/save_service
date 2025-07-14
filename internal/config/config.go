@@ -23,12 +23,12 @@ type General struct {
 	PprofAddr          string
 	DisableSwagger     bool
 	DisablePrintConfig bool
-	DefaultLoginPwd    string `default:"6351623c8cef86fefabfa7da046fc619"` // MD5(abc-123)
+	DefaultLoginPwd    string `default:"4297f44b13955235245b2497399d7a93"` // MD5(123123)
 	WorkDir            string // From command arguments
 	MenuFile           string // From schema.Menus (JSON/YAML)
 	DenyOperateMenu    bool
 	HTTP               struct {
-		Addr            string `default:":8040"`
+		Addr            string `default:":8080"`
 		ShutdownTimeout int    `default:"10"` // seconds
 		ReadTimeout     int    `default:"60"` // seconds
 		WriteTimeout    int    `default:"60"` // seconds
@@ -40,7 +40,8 @@ type General struct {
 		ID       string `default:"root"`
 		Username string `default:"admin"`
 		Password string
-		Name     string `default:"Admin"`
+		Nickname string `default:"Admin"`
+		Avatar   string `default:"https://avatars.githubusercontent.com/u/15099278?s=48"`
 	}
 }
 

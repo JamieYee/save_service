@@ -2,6 +2,7 @@ package biz
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"sort"
 	"time"
@@ -151,6 +152,8 @@ func (a *Login) Login(ctx context.Context, formItem *schema.LoginForm) (*schema.
 	// login by root
 	if formItem.Username == config.C.General.Root.Username {
 		if formItem.Password != config.C.General.Root.Password {
+			log.Printf("1Username: %s, Password: %s\n", config.C.General.Root.Username, config.C.General.Root.Password)
+			log.Printf("Username: %s, Password: %s\n", formItem.Username, formItem.Password)
 			return nil, errors.BadRequest(config.ErrInvalidUsernameOrPassword, "Incorrect username or password")
 		}
 
@@ -246,7 +249,8 @@ func (a *Login) GetUserInfo(ctx context.Context) (*schema.User, error) {
 		return &schema.User{
 			ID:       config.C.General.Root.ID,
 			Username: config.C.General.Root.Username,
-			Name:     config.C.General.Root.Name,
+			Nickname: config.C.General.Root.Nickname,
+			Avatar:   config.C.General.Root.Avatar,
 			Status:   schema.UserStatusActivated,
 		}, nil
 	}
@@ -366,9 +370,8 @@ func (a *Login) UpdateUser(ctx context.Context, updateItem *schema.UpdateCurrent
 		return errors.NotFound("", "User not found")
 	}
 
-	user.Name = updateItem.Name
-	user.Phone = updateItem.Phone
-	user.Email = updateItem.Email
+	user.Nickname = updateItem.NickName
+	user.Avatar = updateItem.Avatar
 	user.Remark = updateItem.Remark
-	return a.UserDAL.Update(ctx, user, "name", "phone", "email", "remark")
+	return a.UserDAL.Update(ctx, user, "nickname", "avatar", "remark")
 }

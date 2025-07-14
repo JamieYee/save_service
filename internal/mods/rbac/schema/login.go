@@ -31,8 +31,7 @@ type LoginToken struct {
 }
 
 type UpdateCurrentUser struct {
-	Name   string `json:"name" binding:"required,max=64"` // Name of user
-	Phone  string `json:"phone" binding:"max=32"`         // Phone number of user
-	Email  string `json:"email" binding:"max=128"`        // Email of user
-	Remark string `json:"remark" binding:"max=1024"`      // Remark of user
+	NickName string `json:"nickname" binding:"required,max=64"` // Name of user
+	Avatar   string `json:"avatar" binding:"max=256"`           // Phone number of user
+	Remark   string `json:"remark" binding:"max=1024"`          // Remark of user
 }
