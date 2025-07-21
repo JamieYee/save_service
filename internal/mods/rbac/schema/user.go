@@ -89,6 +89,10 @@ func (a *UserForm) FillTo(user *User) error {
 	user.Remark = a.Remark
 	user.Status = a.Status
 
+	if avatar := a.Avatar; avatar != "" {
+		user.Avatar = avatar
+	}
+
 	if pass := a.Password; pass != "" {
 		hashPass, err := hash.GeneratePassword(pass)
 		if err != nil {

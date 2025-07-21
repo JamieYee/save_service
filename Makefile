@@ -4,7 +4,7 @@ NOW = $(shell date -u '+%Y%m%d%I%M%S')
 
 RELEASE_VERSION = v1.0.0
 
-APP 			= save_service
+APP 			= save_service.exe
 SERVER_BIN  	= ${APP}
 GIT_COUNT 		= $(shell git rev-list --all --count)
 GIT_HASH        = $(shell git rev-parse --short HEAD)
@@ -45,7 +45,7 @@ serve: build
 	./$(SERVER_BIN) start $(START_ARGS)
 
 serve-d: build
-	./$(SERVER_BIN) start $(START_ARGS) -d
+	./$(SERVER_BIN) start $(START_ARGS) --daemon
 
 stop:
 	./$(SERVER_BIN) stop

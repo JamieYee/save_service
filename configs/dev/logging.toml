@@ -12,7 +12,7 @@ MaxSize = 64 # MB
 [[Logger.Hooks]]
 Enable = true
 Level = "info"
-Type = "gorm" # gorm
+Type = "gorm"
 MaxBuffer = 1024
 MaxThread = 2
 

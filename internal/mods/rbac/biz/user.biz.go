@@ -2,6 +2,7 @@ package biz
 
 import (
 	"context"
+	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
@@ -135,6 +136,7 @@ func (a *User) Create(ctx context.Context, formItem *schema.UserForm) (*schema.U
 // Update the specified user in the data access object.
 func (a *User) Update(ctx context.Context, id string, formItem *schema.UserForm) error {
 	user, err := a.UserDAL.Get(ctx, id)
+	fmt.Printf("Update1111 id: %v, user1: %+v\n,user2: %+v\n ", id, user, formItem)
 	if err != nil {
 		return err
 	} else if user == nil {
@@ -158,20 +160,23 @@ func (a *User) Update(ctx context.Context, id string, formItem *schema.UserForm)
 			return err
 		}
 
-		if err := a.UserRoleDAL.DeleteByUserID(ctx, id); err != nil {
-			return err
-		}
-		for _, userRole := range formItem.Roles {
-			if userRole.ID == "" {
-				userRole.ID = util.NewXID()
-			}
-			userRole.UserID = user.ID
-			if userRole.CreatedAt.IsZero() {
-				userRole.CreatedAt = time.Now()
-			}
-			userRole.UpdatedAt = time.Now()
-			if err := a.UserRoleDAL.Create(ctx, userRole); err != nil {
+		// 只在 roles 不为空时才更新角色
+		if len(formItem.Roles) > 0 {
+			if err := a.UserRoleDAL.DeleteByUserID(ctx, id); err != nil {
 				return err
+			}
+			for _, userRole := range formItem.Roles {
+				if userRole.ID == "" {
+					userRole.ID = util.NewXID()
+				}
+				userRole.UserID = user.ID
+				if userRole.CreatedAt.IsZero() {
+					userRole.CreatedAt = time.Now()
+				}
+				userRole.UpdatedAt = time.Now()
+				if err := a.UserRoleDAL.Create(ctx, userRole); err != nil {
+					return err
+				}
 			}
 		}
 

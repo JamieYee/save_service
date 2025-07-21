@@ -40,8 +40,10 @@ func (h *GormHook) Exec(extra map[string]string, b []byte) error {
 	msg := &Logger{
 		ID: xid.New().String(),
 	}
+
 	data := make(map[string]interface{})
 	err := jsoniter.Unmarshal(b, &data)
+
 	if err != nil {
 		return err
 	}

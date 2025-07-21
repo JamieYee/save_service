@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"github.com/JamieYee/save_service/internal/mods/rbac/biz"
 	"github.com/JamieYee/save_service/internal/mods/rbac/schema"
 	"github.com/JamieYee/save_service/pkg/util"
@@ -71,8 +70,6 @@ func (a *User) Get(c *gin.Context) {
 func (a *User) Create(c *gin.Context) {
 	ctx := c.Request.Context()
 	item := new(schema.UserForm)
-	// 打印 item 内容
-	fmt.Printf("UserForm item: %+v\n", item)
 	if err := util.ParseJSON(c, item); err != nil {
 		util.ResError(c, err)
 		return
